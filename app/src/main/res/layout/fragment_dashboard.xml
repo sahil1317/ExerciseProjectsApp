@@ -4,6 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <variable
+            name="model"
+            type="String" />
 
     </data>
 
@@ -17,7 +20,10 @@
             android:layout_height="@dimen/_45sdp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@color/white"
+            android:elevation="@dimen/_2sdp"
+            android:translationZ="@dimen/_2sdp">
 
             <TextView
                 android:id="@+id/toolbarTitle"
