@@ -3,13 +3,13 @@ package com.sahil.exerciseprojectsapp.views.fragments
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import com.sahil.exerciseprojectsapp.R
 import com.sahil.exerciseprojectsapp.base.BaseFragment
 import com.sahil.exerciseprojectsapp.databinding.FragmentDashboardBinding
 import com.sahil.exerciseprojectsapp.views.adapter.DashboardRecyclerAdapter
 import com.sahil.exerciseprojectsapp.vm.DashboardVm
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 import javax.inject.Inject
 
 
@@ -27,7 +27,6 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding?.model="STring"
         setRecycler()
         observeData()
     }
@@ -36,10 +35,18 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding>() {
         viewModel.exerciseList.observe(viewLifecycleOwner) {
             adapter.submitList(it)
         }
-    }
+        viewModel.adapterItemSelected.observe(viewLifecycleOwner){fragment->
+            Timber.e("DASHBOARD_ADAPTER_CLICK----------->       $fragment")
+                    goNextFragment(fragment)
+
+            }
+        }
+
 
     private fun setRecycler() {
         binding?.exerciseRecycler?.adapter=adapter
+        adapter.setOnItemClick(viewModel)
+
     }
 
 }

@@ -9,5 +9,14 @@
         android:id="@+id/dashboardFragment"
         android:name="com.sahil.exerciseprojectsapp.views.fragments.DashboardFragment"
         android:label="fragment_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_dashboardFragment_to_coroutineExampleFragment"
+            app:destination="@id/coroutineExampleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/coroutineExampleFragment"
+        android:name="com.sahil.exerciseprojectsapp.views.fragments.CoroutineExampleFragment"
+        android:label="CoroutineExampleFragment"
+        tools:layout="@layout/fragment_coroutine_example"/>
 </navigation>
